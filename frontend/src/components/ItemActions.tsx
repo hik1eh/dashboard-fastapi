@@ -1,0 +1,2 @@
+import { Pencil, Trash2 } from 'lucide-react'
+export function ItemActions({ onEdit, onDelete }: { onEdit: () => void; onDelete: () => void }) { return <div className="item-actions" onClick={(event) => event.stopPropagation()}><button className="icon" onClick={onEdit} aria-label="Редактировать"><Pencil size={16}/></button><button className="icon danger-icon" onClick={onDelete} aria-label="Удалить"><Trash2 size={16}/></button></div> }
