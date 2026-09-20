@@ -71,7 +71,7 @@ class ReminderRepository(OwnedRepository[Reminder]):
 
 class ScheduleRepository(OwnedRepository[Schedule]):
     model = Schedule
-    order_by = (Schedule.weekday, Schedule.starts_at)
+    order_by = (Schedule.week_number, Schedule.weekday, Schedule.starts_at)
 
 
 class PlanRepository(OwnedRepository[CorePlan]):

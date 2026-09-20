@@ -99,7 +99,7 @@ class PlannerService:
 
     async def update_schedule(self, user_id: UUID, item_id: UUID, data: ScheduleCreate) -> Schedule:
         item = await self._owned(self.repositories.schedule, item_id, user_id)
-        item.title, item.weekday = data.title, data.weekday
+        item.title, item.week_number, item.weekday = data.title, data.week_number, data.weekday
         item.starts_at, item.ends_at, item.location = data.starts_at, data.ends_at, data.location
         return await self._save(item)
 

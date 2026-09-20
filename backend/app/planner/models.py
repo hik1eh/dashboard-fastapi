@@ -1,7 +1,7 @@
 from datetime import date, datetime, time
 from uuid import UUID, uuid4
 
-from sqlalchemy  import Boolean, Date, DateTime, ForeignKey, Integer, String, Text, Time, UniqueConstraint
+from sqlalchemy  import Boolean, CheckConstraint, Date, DateTime, ForeignKey, Integer, String, Text, Time, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base, TimeStampMixin
@@ -38,8 +38,10 @@ class WeeklyGoal(OwnedMixin, TimeStampMixin, Base):
 
 class Schedule(OwnedMixin, TimeStampMixin, Base): 
     __tablename__ = 'schedules'
+    __table_args__ = (CheckConstraint("week_number IN (1, 2)", name="ck_schedule_week_number"),)
     id : Mapped[UUID] = mapped_column(primary_key=True,  default=uuid4)
     title : Mapped[str] = mapped_column(String(180))
+    week_number : Mapped[int] = mapped_column(Integer, default=1)
     weekday : Mapped[int] = mapped_column(Integer)
     starts_at : Mapped[time] = mapped_column(Time)
     ends_at : Mapped[time] = mapped_column(Time)

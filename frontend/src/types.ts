@@ -5,7 +5,7 @@ export interface Task { id: string; title: string; due_date: string | null; prio
 export interface Goal { id: string; title: string; week_start: string; progress: number }
 export interface CalendarEvent { id: string; title: string; starts_at: string; ends_at: string | null; color: string }
 export interface Reminder { id: string; title: string; remind_at: string; completed: boolean }
-export interface Schedule { id: string; title: string; weekday: number; starts_at: string; ends_at: string; location: string | null }
+export interface Schedule { id: string; title: string; week_number: 1 | 2; weekday: number; starts_at: string; ends_at: string; location: string | null }
 export interface Habit { id: string; title: string; color: string; checked_days: string[] }
 export interface Plan { id: string; title: string; description: string; completed: boolean }
 export interface Note { id: string; title: string; content: string; updated_at: string }

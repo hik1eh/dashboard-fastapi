@@ -56,6 +56,7 @@ class ReminderRead(ReminderCreate, OrmSchema):
 
 class ScheduleCreate(BaseModel):
     title: str = Field(min_length=1, max_length=180)
+    week_number: int = Field(ge=1, le=2)
     weekday: int = Field(ge=0, le=6)
     starts_at: time
     ends_at: time
